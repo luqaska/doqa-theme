@@ -10,6 +10,7 @@
     <meta name="if:Show RSS link" content="0">
     <meta name="text:Widget Code" content="">
     <meta name="text:Disqus Shortname" content="">
+    <meta name="text:Utterances Code" content="">
 {/block:Options}
 <html lang="{block:English}en-US{/block:English}{block:German}de-DE{/block:German}{block:French}fr-FR{/block:French}{block:Italian}it-IT{/block:Italian}{block:Japanese}ja-JP{/block:Japanese}{block:Turkish}tr-TR{/block:Turkish}{block:Spanish}es-ES{/block:Spanish}{block:Russian}ru-RU{/block:Russian}{block:Polish}pl-PL{/block:Polish}{block:PortuguesePT}pt-PT{/block:PortuguesePT}{block:PortugueseBR}pt-BR{/block:PortugueseBR}{block:Dutch}nl-NL{/block:Dutch}{block:Korean}ko-KR{/block:Korean}{block:ChineseSimplified}zh-CN{/block:ChineseSimplified}{block:ChineseTraditional}zh-TW{/block:ChineseTraditional}{block:ChineseHK}zh-HK{/block:ChineseHK}{block:Indonesian}id-ID{/block:Indonesian}{block:Hindi}hi-IN{/block:Hindi}">
     <!--Theme: "Vision" by April Sylph-->
@@ -17,13 +18,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{Title}{block:PostSummary}: {PostSummary}{/block:PostSummary}{block:SearchPage}: {lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results found}{/block:NoSearchResults}{/block:SearchPage}{block:TagPage}: {lang:Posts tagged Tag}{/block:TagPage}{block:DayPage}: {lang:Viewing everything posted on Month DayOfMonth Year}{/block:DayPage}</title>
+        <title>{block:PostSummary}{PostSummary} | {/block:PostSummary}{block:SearchPage}: {lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results found}{/block:NoSearchResults}{/block:SearchPage}{block:TagPage}: {lang:Posts tagged Tag}{/block:TagPage}{block:DayPage}: {lang:Viewing everything posted on Month DayOfMonth Year}{/block:DayPage}{Title}</title>
         <link rel="shortcut icon" href="{Favicon}">
         <meta name="description" content="{MetaDescription}">
         <meta name="theme-color" content="{BackgroundColor}">
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
         <link rel="stylesheet" href="https://static.tumblr.com/2wliono/Vf7pfceur/normalize.css">
-        <link rel="stylesheet" href="https://static.tumblr.com/2wliono/Wf0qynrqc/vision_core.css">
+        <link rel="stylesheet" href="https://static.tumblr.com/2wliono/ouuqwnguu/vision_core.css">
         <link rel="stylesheet" href="{select:Posts palette}">
         <link rel="stylesheet" media="(max-width: 540px)" href="https://static.tumblr.com/2wliono/984qvrvji/vision_mobile.css">
         <link rel="stylesheet" href="https://assets.tumblr.com/fonts/favorit/stylesheet.css?v=1">
@@ -93,16 +94,8 @@
                 <h3>{lang:Viewing everything posted on Month DayOfMonth Year}</h3>{/block:DayPage}{block:NoPosts}
                 <h3>{lang:This minimalist Tumblr has no posts}</h3>{/block:NoPosts}{block:Posts inlineMediaWidth="540"}
                 <article {block:Date}id="{PostID}" {/block:Date}class="{PostType} post">{block:Date}
-                    <header>{block:IfShowPostAuthors}
-                        <img class="post-author-portrait" src="{PostAuthorPortraitURL-64}" aria-hidden="true" {block:Submission}hidden{/block:Submission}>{/block:IfShowPostAuthors}
-                        <div class="post-attribution">{block:IfShowPostAuthors}
-                            <a class="post-author-name" href="{PostAuthorURL}" {Target} title="{PostAuthorTitle}" aria-label="{lang:Posted by PostAuthorName}" {block:Submission}hidden{/block:Submission}>{PostAuthorName}</a>{/block:IfShowPostAuthors}{block:RebloggedFrom}
-                            <a class="reblog-parent-name" href="{ReblogParentURL}" {Target} title="{ReblogParentTitle}" aria-label="{lang:Reblogged from ReblogParentName}">{ReblogParentName}</a>{/block:RebloggedFrom}
-                        </div>{block:Actions}
-                        <a class="post-action" href="{URL}" {Target}>{Text}</a>{/block:Actions}
-                    </header>{/block:Date}
                     <section class="media">{block:Text}{block:Title}
-                        <h1>{Title}</h1>{/block:Title}{/block:Text}{block:Photo}
+                        <a style="text-decoration:none" href="{Permalink}"><h1>{Title}</h1></a>{/block:Title}{/block:Text}{block:Photo}
                         <figure{block:HighRes} class="tmblr-full"{/block:HighRes}>
                             <a href="/image/{PostID}"><img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"></a>{block:LinkURL}
                             <a class="link-url" href="{LinkURL}" {Target}>{LinkURL}</a>{/block:LinkURL}
@@ -176,7 +169,7 @@
                     <section class="tags">{block:PinnedPostLabel}<span class="pinned-post-label"><svg viewBox="18 13 12 21" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M26.252 27.266l-2.078 7.592c-.052.19-.296.19-.348 0l-2.078-7.592h4.504zM29.512 14c.268 0 .488.241.488.536v1.746a.554.554 0 01-.255.47l-1.698 1.193v4.009l1.787 1.257-.034.006c.128.107.2.264.199.43v1.744c0 .296-.22.537-.488.537H18.488c-.268 0-.488-.241-.488-.537v-1.743a.555.555 0 01.255-.47l1.698-1.195v-4.008l-1.787-1.258.034-.006a.554.554 0 01-.199-.43v-1.745c0-.295.22-.536.488-.536h11.023z"></path></svg>{PinnedPostLabel}</span>{/block:PinnedPostLabel}{block:HasTags}{block:Tags}<a href="{TagURL}" class="tag">{Tag}</a>{/block:Tags}{/block:HasTags}</section>{block:Date}
                     <footer>{block:NoteCount}
                         <a class="note-count" href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}
-                        <a class="timestamp" href="{Permalink}" title="{lang:Posted TimeAgo}">{ShortMonth} {DayOfMonth}, {Year}</a>
+                        <a class="timestamp" style="/*cursor:default*/" title="{lang:Posted TimeAgo}">{ShortMonth} {DayOfMonth}, {Year}</a>
                         <div class="controls">
                             {ReblogButton size="28"}
                             {LikeButton size="28"}
@@ -197,7 +190,10 @@
                         }));
                     </script>
                     <noscript><a href="https://disqus.com/?ref_noscript={text:Disqus Shortname}">{lang:Blog comments powered by Disqus}</a></noscript>
-                </div>{/block:IfDisqusShortname}{/block:PermalinkPage}{block:Pagination}
+                </div>{/block:IfDisqusShortname}{block:IfUtterancesCode}
+                <div id="comments" style="background:white">
+                    {text:Utterances Code}
+                </div>{/block:IfUtterancesCode}{/block:PermalinkPage}{block:Pagination}
                 <div id="pagination" role="navigation" aria-label="{lang:Pages}">
                     <a id="previous-link" {block:PreviousPage} href="{PreviousPage}" {/block:PreviousPage}>{lang:Back}</a>
                     <a id="next-link" {block:NextPage} href="{NextPage}" {/block:NextPage}>{lang:Next}</a>
@@ -238,9 +234,9 @@
                 </section>{/block:IfShowRSSLink}
             </aside>
         </div>
-        <a id="credit" href="https://www.tumblr.com/theme/40627" {Target}>
+        <!--<a id="credit" href="https://www.tumblr.com/theme/40627" {Target}>
             <span>{lang:Install this theme}</span>
-            <img src="https://static.tumblr.com/2wliono/2E5oic9yz/tiny.png" aria-hidden="true">
+            <img src="https://static.tumblr.com/2wliono/2E5oic9yz/tiny.png" aria-hidden="true">-->
         </a>
     </body>
     <script>
