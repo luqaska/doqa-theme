@@ -33,13 +33,11 @@ Most of this theme is configured via your blog's "Appearance options", which als
 
 **Use default mobile theme**: Disable this option to show this theme to visitors on mobile devices.
 
-=========
-
-Please edit the line with "<web>/post/{PostID}" when installing
-
 ## Blog Settings
 
 **Show author portraits**: Enable to credit posts to individual group members, rather than the blog itself.
+
+Pls, change the -web-/posts/{PostID}
 
 # Support
 
