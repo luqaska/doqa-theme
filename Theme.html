@@ -175,14 +175,14 @@
                             {LikeButton size="28"}
                         </div>
                     </footer>{/block:Date}
-                </article>
-                <div id="permalink" style="margin:5px;text-align:center;">
-                    <h5><label for="link">Link: </label><input width="1px" id="link" name="link" onclick="copyP()" type="text" value="<web>/post/{PostID}" readonly><span id="tupicopy"></span></h5>
-                </div>{/block:Posts}{block:PostNotes}
+                </article>{/block:Posts}{block:PostNotes}
                 <div id="notes">
                     <h3>{block:Posts}{NoteCountWithLabel}{/block:Posts}</h3>
                     <div id="notes-scroller">{PostNotes-64}</div>
-                </div>{/block:PostNotes}{block:PermalinkPage}{block:IfDisqusShortname}
+                </div>{/block:PostNotes}{block:PermalinkPage}
+                <div id="permalink" style="margin:5px;text-align:center;">
+                    <h5><label for="link">Link: </label><input id="link" name="link" onclick="copyP()" type="text" value="-web-/posts/{PostID}" readonly><span id="tupicopy"></span></h5>
+                </div>{block:IfDisqusShortname}
                 <div id="comments">
                     <h3>{lang:Blog comments powered by Disqus}</h3>
                     <div id="disqus_thread"></div>
