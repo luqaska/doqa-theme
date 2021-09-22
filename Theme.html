@@ -175,7 +175,10 @@
                             {LikeButton size="28"}
                         </div>
                     </footer>{/block:Date}
-                </article>{/block:Posts}{block:PostNotes}
+                </article>
+                <div id="permalink" style="margin:5px;text-align:center;">
+                    <h5><label for="link">Link: </label><input width="1px" id="link" name="link" onclick="copyP()" type="text" value="<web>/post/{PostID}" readonly><span id="tupicopy"></span></h5>
+                </div>{/block:Posts}{block:PostNotes}
                 <div id="notes">
                     <h3>{block:Posts}{NoteCountWithLabel}{/block:Posts}</h3>
                     <div id="notes-scroller">{PostNotes-64}</div>
@@ -244,6 +247,18 @@
         const robots = document.head.querySelector('meta[name="robots"]');
         if (robots === null || robots.content !== 'noindex') {
             search.classList.add('search-enabled');
+        }
+        function copyP() {
+            if (typeof document.getElementById("link") !== 'undefined') {
+                const link = document.getElementById("link");
+                link.select();
+                link.setSelectionRange(0, 99999);
+                navigator.clipboard.writeText(link.value);
+                document.getElementById("tupicopy").innerHTML = " 👍";
+                setTimeout(function(){
+                    document.getElementById("tupicopy").innerHTML = "";
+                }, 2000);
+            }
         }
     </script>
 </html>
